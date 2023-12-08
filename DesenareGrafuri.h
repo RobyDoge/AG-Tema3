@@ -2,6 +2,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_DesenareGrafuri.h"
 
+#include "StronglyConnectedComponentsDraw.h"
 #include "TopologicalSortDraw.h"
 #include "Graph.h"
 #include <QMouseEvent>
@@ -27,5 +28,6 @@ private:
     Ui::DesenareGrafuriClass ui;
     Graph m_graph;
     Node m_firstNode;
-    TopologicalSortDraw* m_windowsTS;
+    TopologicalSortDraw* m_windowTS;
+    StronglyConnectedComponentsDraw* m_windowSCC;
 };

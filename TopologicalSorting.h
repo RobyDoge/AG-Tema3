@@ -3,8 +3,8 @@
 class TopologicalSorting
 {
 public:
-	static std::vector<int> TopologicalSort(Graph& graph);
-
+	static std::vector<int> TopologicalSort(const Graph& graph);
+	
 
 private:
 	static bool IsCyclic(const std::vector<std::vector<int>>& adjacencyMatrix);

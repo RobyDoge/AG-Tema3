@@ -2,6 +2,8 @@
 
 Graph::Graph()
 {
+	m_arches = {};
+
 }
 
 std::vector<Node> Graph::getNodes() const

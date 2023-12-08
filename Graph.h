@@ -7,7 +7,7 @@ class Graph
 public:
 	Graph();
 	
-	std::vector<Node> getNodes()const ; 
+	std::vector<Node> getNodes()const ;
 	std::vector<Arch> getArches() const;
 	void SetNodes(const std::vector<Node>& nodes);
 	std::vector<std::vector<int>> GetAdjacencyMatrix() const;

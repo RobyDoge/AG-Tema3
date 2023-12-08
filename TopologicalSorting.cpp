@@ -4,8 +4,11 @@
 #include <numeric>
 #include <list>
 
-std::vector<int> TopologicalSorting::TopologicalSort(Graph& graph)
+std::vector<int> TopologicalSorting::TopologicalSort(const Graph& graph)
 {
+    if (graph.GetAdjacencyMatrix().empty())
+        return {};
+
     if (IsCyclic(graph.GetAdjacencyMatrix()))
     {
         return {};

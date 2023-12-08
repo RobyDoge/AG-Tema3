@@ -43,7 +43,7 @@ TopologicalSortDraw::~TopologicalSortDraw() = default;
 
 void TopologicalSortDraw::paintEvent(QPaintEvent* e)
 {
-	if (m_sortedVector.empty())
+	if (m_sortedVector.empty() && !m_graph.GetAdjacencyMatrix().empty())
 	{
 		auto label = new QLabel(this);
 		label->setText("!In Graf Sunt Prezente Cicluri!");

@@ -1,6 +1,6 @@
 #include "DesenareGrafuri.h"
 #include "TopologicalSorting.h"
-
+#include "StronglyConnectedComponents.h"
 
 #include <QPushButton>
 DesenareGrafuri::DesenareGrafuri(QWidget* parent)
@@ -12,6 +12,8 @@ DesenareGrafuri::DesenareGrafuri(QWidget* parent)
 	connect(ui.buttonTopologicalSorting, &QPushButton::clicked, this, &DesenareGrafuri::OnButtonTopologicalSortingClicked);
 	connect(ui.buttonStronglyConnectedComponents, &QPushButton::clicked, this, &DesenareGrafuri::OnButtonStronglyConnectedComponentsClicked);
 	m_firstNode.setValue(-1);
+	m_windowSCC = nullptr;
+	m_windowTS = nullptr;
 }
 
 DesenareGrafuri::~DesenareGrafuri()= default;
@@ -48,7 +50,6 @@ void DesenareGrafuri::mouseReleaseEvent(QMouseEvent* e)
 		}
 	}
 }
-
 
 void DesenareGrafuri::paintEvent(QPaintEvent* e)
 {
@@ -105,26 +106,43 @@ void DesenareGrafuri::paintEvent(QPaintEvent* e)
 
 void DesenareGrafuri::OnButtonTopologicalSortingClicked()
 {
-	m_windowsTS = new TopologicalSortDraw;
-	m_windowsTS->SetGraph(m_graph);
-	m_windowsTS->SetSortedVector(TopologicalSorting::TopologicalSort(m_graph));
-	connect(m_windowsTS, &TopologicalSortDraw::ReturnButtonClicked, this, &DesenareGrafuri::ReturnToMainWindow);
+	m_windowTS = new TopologicalSortDraw;
+	m_windowTS->SetGraph(m_graph);
+	m_windowTS->SetSortedVector(TopologicalSorting::TopologicalSort(m_graph));
+	connect(m_windowTS, &TopologicalSortDraw::ReturnButtonClicked, this, &DesenareGrafuri::ReturnToMainWindow);
 
-	m_windowsTS->show();
-	m_windowsTS->Draw(m_graph.getNodes());
+	m_windowTS->show();
+	m_windowTS->Draw(m_graph.getNodes());
 	hide();
 }
 
 void DesenareGrafuri::OnButtonStronglyConnectedComponentsClicked()
 {
-	
+	m_windowSCC = new StronglyConnectedComponentsDraw;
+	auto test = StronglyConnectedComponents::CreateStronglyConnectedComponents(m_graph);
+	m_windowSCC->CreateNewGraph(m_graph, test);
+
+	connect(m_windowSCC, &StronglyConnectedComponentsDraw::ReturnButtonClicked, this, &DesenareGrafuri::ReturnToMainWindow);
+	m_windowSCC->show();
+	hide();
 }
 
-void DesenareGrafuri::ReturnToMainWindow() {
-	m_windowsTS->hide();
-	show();
-	delete m_windowsTS;
-	m_windowsTS = nullptr;
+void DesenareGrafuri::ReturnToMainWindow()
+{
+	if(m_windowSCC!=nullptr)
+	{
+		m_windowSCC->hide();
+		show();
+		delete m_windowSCC;
+		m_windowSCC = nullptr;
+	}
+	else
+	{
+		m_windowTS->hide();
+		show();
+		delete m_windowTS;
+		m_windowTS = nullptr;
+	}
 }
 
 

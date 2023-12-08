@@ -9,8 +9,8 @@ public:
 	void setFirstNode(Node firstNode);
 	void setSecondNode(Node secondNode);
 
-	Node getFirstNode();
-	Node getSecondNode();
+	Node getFirstNode() const;
+	Node getSecondNode() const;
 
 
 private:

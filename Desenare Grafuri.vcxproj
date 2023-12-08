@@ -92,6 +92,8 @@
     <ClCompile Include="Arches.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="StronglyConnectedComponents.cpp" />
+    <ClCompile Include="StronglyConnectedComponentsDraw.cpp" />
     <ClCompile Include="TopologicalSortDraw.cpp" />
     <ClCompile Include="TopologicalSorting.cpp" />
     <QtRcc Include="DesenareGrafuri.qrc" />
@@ -99,6 +101,7 @@
     <QtMoc Include="DesenareGrafuri.h" />
     <ClCompile Include="DesenareGrafuri.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="StronglyConnectedComponentsDraw.ui" />
     <QtUic Include="TopologicalSortDraw.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +109,8 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
     <QtMoc Include="TopologicalSortDraw.h" />
+    <ClInclude Include="StronglyConnectedComponents.h" />
+    <QtMoc Include="StronglyConnectedComponentsDraw.h" />
     <ClInclude Include="TopologicalSorting.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

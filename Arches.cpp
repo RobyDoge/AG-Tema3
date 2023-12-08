@@ -20,12 +20,12 @@ void Arch::setSecondNode(Node secondNode)
     m_secondNode = secondNode;
 }
 
-Node Arch::getFirstNode()
+Node Arch::getFirstNode() const
 {
     return m_firstNode;
 }
 
-Node Arch::getSecondNode()
+Node Arch::getSecondNode() const
 {
     return m_secondNode;
 }
